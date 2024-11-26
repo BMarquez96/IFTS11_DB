@@ -1,4 +1,6 @@
 #%%
+from StrToDic import Str2Doc
+
 class Documento():
     def __init__(self, id, contenido = None):
         self.id = id
@@ -41,8 +43,17 @@ class Coleccion():
     def search(self, id_documento):
         return self.documentos.get(id_documento, None)
     
-    #def importColleccion(self, ): #IMPORT CSV
-        ##Falta este que utiliza el Str2Dic(schema)
+    def import_colleccion(self, ruta): ###### TEST IMPORT CSV  ######
+        userRuta = ruta
+
+        with open(userRuta, "rt") as file:
+            schema = file.readline().replace("/n","")
+            csv = Str2Doc(schema)
+            
+            for line in file:
+                nuevo = Documento(self.id, csv.convert(line.strip())) #strip elimina los espacios en blanco
+                self.add_doc(nuevo)
+                self.id +=1
     
     def __str__(self):
         return f"Coleccion {self.nombre} con {len(self.documentos)} documentos."
@@ -57,8 +68,9 @@ c.add_doc(l2)
 libro = c.search(2)
 
 print(libro.obtn_valor("Titulo"), libro.obtn_valor("Autor"))
-"""
+
 #c.drop(l1[id])
+"""
 
 class BDD(object):
     def __init__(self, nombre):

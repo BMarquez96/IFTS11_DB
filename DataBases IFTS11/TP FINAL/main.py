@@ -28,10 +28,10 @@ def main():
             nombre_coleccion = input("Ingrese el nombre de la colección: ")
             collection = db.get_collection(nombre_coleccion)
             ruta_csv = input("Ingrese la ruta del archivo CSV: ")
-            collection.import_csv(nombre_coleccion, ruta_csv)
+            collection.import_colleccion(ruta_csv)
         
         elif opcion == "3":
-            nombre_coleccion = input("Ingrese el nombre de la colección: ")
+            nombre_coleccion = int(input("Ingrese el nombre de la colección: "))
             doc_id = input("Ingrese el ID del documento: ")
             coleccion = db.get_collection(nombre_coleccion)
             if coleccion:
@@ -45,7 +45,7 @@ def main():
                 print(f"Colección '{nombre_coleccion}' no encontrada.")
         
         elif opcion == "4":
-            nombre_coleccion = input("Ingrese el nombre de la colección: ")
+            nombre_coleccion = int(input("Ingrese el nombre de la colección: "))
             doc_id = input("Ingrese el ID del documento a eliminar: ")
             coleccion = db.get_collection(nombre_coleccion)
             if coleccion:

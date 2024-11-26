@@ -1,6 +1,6 @@
 #%%
-schema = "Nombre,Apellido,Edad,Mail"
-row = "Brian,Marquez,27,bmarquez@test.com"
+#schema = "Nombre,Apellido,Edad,Mail"
+#row = "Brian,Marquez,27,bmarquez@test.com"
 
 class Str2Dic(object):
     def __init__(self, schemaStr, separator=","):
@@ -20,9 +20,11 @@ class Str2Dic(object):
             return dic
         
 
+"""
 o = Str2Dic(schema)
 d = o.convert(row)
 print(d)
+"""
 
 #%%
 class Str2Doc(object):
@@ -45,6 +47,8 @@ class Str2Doc(object):
             return dic
 
 
+"""
 s2d = Str2Doc("nombre,mail,telefono,edad")
 print(s2d.keys)
 print(s2d.convert("brian,g@mailcom,228jk989,2a8"))
+"""
